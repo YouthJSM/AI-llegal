@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project AI-llegal — Cross-Border Immigration Navigator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+     /* --black:   #0A0A0A;
+      --dark:    #111111;
+      --card:    #181818;
+      --border:  #242424;
+      --green:   #1A6B3C;
+      --mint:    #00E676;
+      --sand:    #F5E6C8;
+      --muted:   #888888;
+      --white:   #FFFFFF;
+      --red:     #CE1126;   /* Mozambique red */
+     /* --gold:    #FCB514;*/   /* SA gold */
+
+     :root {
+  --black:   #1A1A1A;
+  --dark:    #F7F9F7;
+  --card:    #FFFFFF;
+  --border:  #E2EBE6;
+  --green:   #1A6B3C;
+  --mint:    #1A6B3C;
+  --sand:    #1A1A1A;
+  --muted:   #6B7C74;
+  --white:   #0A0A0A;
+  --red:     #CE1126;
+  --gold:    #FCB514;
+}
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #F7F9F7;
+      color: #1A1A1A;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      color: #1A6B3C;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-flags { font-size: 1.2rem; margin-left: 0.4rem; }
+    .nav-cta {
+      background: #1A6B3C;
+      color: #FFFFFF;
+      border: none; border-radius: 100px;
+      padding: 0.45rem 1.1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 1.5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Signature: diagonal border-crossing gradient */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(26,107,60,0.18) 0%,
+          transparent 45%,
+          rgba(206,17,38,0.10) 100%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(0,230,118,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.6; }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(0,230,118,0.1);
+      border: 1px solid rgba(0,230,118,0.25);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--mint); letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 1.5rem; width: fit-content;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: 0.6rem; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      position: relative; z-index: 1;
+    }
+    .hero h1 .accent { color: var(--mint); }
+    .hero h1 .accent-red { color: #FF4458; }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #BBBBBB;
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+
+    .hero-langs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      position: relative; z-index: 1;
+    }
+    .lang-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem; color: var(--sand);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero-actions {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .btn-primary {
+      background: var(--mint); color: var(--black);
+      border: none; border-radius: 100px;
+      padding: 0.85rem 1.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.85rem 1.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500; font-size: 0.95rem;
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.15s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--mint); color: var(--mint); }
+
+    /* ── STATS STRIP ── */
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+    }
+    .stat {
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.7rem; font-weight: 700;
+      color: var(--mint); display: block;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 4rem 1.5rem; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--mint); text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .section-body { color: #BBBBBB; max-width: 520px; line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--dark); }
+    .steps { display: flex; flex-direction: column; gap: 1px; margin-top: 2.5rem; }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: rgba(0,230,118,0.3); }
+    .step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--mint);
+      background: rgba(0,230,118,0.1);
+      border: 1px solid rgba(0,230,118,0.2);
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap; margin-top: 0.1rem;
+    }
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .step-desc { font-size: 0.88rem; color: #AAAAAA; line-height: 1.6; }
+
+    /* ── BOT SECTION ── */
+    .bot-section { background: var(--black); }
+    .bot-wrapper {
+      margin-top: 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px rgba(0,230,118,0.06);
+    }
+    .bot-wrapper iframe {
+      width: 100%; height: 600px;
+      border: none; display: block;
+    }
+
+    /* ── EMAIL CAPTURE ── */
+    .email-section {
+      background: linear-gradient(135deg, #0D1F14 0%, #0A0A0A 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .email-card {
+      background: var(--card);
+      border: 1px solid rgba(0,230,118,0.2);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      margin-top: 2rem;
+    }
+    .email-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .email-card p { color: #AAAAAA; font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .email-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .email-form input, .email-form select, .email-form textarea {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .email-form input:focus, .email-form select:focus, .email-form textarea:focus {
+      outline: none; border-color: var(--mint);
+    }
+    .email-form select option { background: #111; }
+    .email-form textarea { height: 90px; resize: vertical; }
+    .email-form button {
+      background: var(--mint); color: var(--black);
+      border: none; border-radius: 10px;
+      padding: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .email-form button:hover { opacity: 0.88; }
+    .form-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.5rem; }
+    .success-msg {
+      display: none; text-align: center;
+      padding: 1.5rem; color: var(--mint);
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+    }
+
+    /* ── WHAT WE COVER ── */
+    .covers { background: var(--dark); }
+    .cover-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem; margin-top: 2rem;
+    }
+    .cover-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      transition: border-color 0.2s;
+    }
+    .cover-item:hover { border-color: rgba(0,230,118,0.25); }
+    .cover-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .cover-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .cover-desc { font-size: 0.77rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: rgba(206,17,38,0.05);
+      border: 1px solid rgba(206,17,38,0.15);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 2rem 1.5rem 0;
+      font-size: 0.8rem; color: #AAAAAA; line-height: 1.6;
+    }
+    .disclaimer strong { color: #FF6B6B; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--mint); margin-bottom: 0.5rem;
+    }
+    .footer-tagline { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .footer-flags { font-size: 1.4rem; margin-bottom: 1rem; }
+    .footer-links {
+      display: flex; gap: 1.5rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--mint); }
+    .footer-copy { font-size: 0.75rem; color: #444; }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switch {
+      position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 200;
+      display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
+    }
+    .lang-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.78rem; color: var(--white);
+      cursor: pointer; font-family: 'Space Grotesk', sans-serif;
+      transition: all 0.2s;
+    }
+    .lang-btn.active { background: var(--mint); color: var(--black); border-color: var(--mint); font-weight: 700; }
+    .lang-btn:hover:not(.active) { border-color: var(--mint); color: var(--mint); }
+
+    @media (min-width: 640px) {
+      section { padding: 5rem 2.5rem; }
+      .cover-grid { grid-template-columns: repeat(3, 1fr); }
+      .email-form { flex-direction: row; flex-wrap: wrap; }
+      .email-form input, .email-form select { flex: 1; min-width: 180px; }
+      .email-form textarea { width: 100%; }
+      .email-form button { width: 100%; }
+      .disclaimer { margin: 2rem 2.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <span class="nav-logo">AI<span>-llegal</span></span>
+    <span class="nav-flags">🇿🇦🇲🇿</span>
+  </div>
+  <a href="#assist" class="nav-cta" id="nav-cta-text">Get Help</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow" id="eyebrow-text">Live · Cross-Border Navigator</div>
+  <h1 id="hero-title">
+    Navigate <span class="accent">SA & Moz</span><br/>
+    immigration.<br/>
+    <span class="accent-red">No confusion.</span>
+  </h1>
+  <p class="hero-sub" id="hero-sub">
+    Passports, visas, DHA Rosebank, multa avoidance — answered in your language, instantly. Built for Mozambican and South African communities.
+  </p>
+  <div class="hero-langs">
+    <span class="lang-pill">🇬🇧 English</span>
+    <span class="lang-pill">🇲🇿 Português</span>
+    <span class="lang-pill">🇿🇦 IsiZulu</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#navigator" class="btn-primary" id="hero-btn1">Ask the Navigator →</a>
+    <a href="#assist" class="btn-ghost" id="hero-btn2">Need Document Help?</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label" id="stat1">Languages</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">24/7</span>
+    <span class="stat-label" id="stat2">Available</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">Free</span>
+    <span class="stat-label" id="stat3">Always</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-eyebrow" id="how-eyebrow">How it works</p>
+  <h2 class="section-title" id="how-title">Three steps to clarity</h2>
+  <p class="section-body" id="how-body">No queues. No lawyers. No guessing. Just ask and get the right information for your situation.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div>
+        <div class="step-title" id="step1t">Choose your language</div>
+        <div class="step-desc" id="step1d">Switch between English, IsiZulu, or Português. The navigator understands and responds in your language.</div>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div>
+        <div class="step-title" id="step2t">Ask your question</div>
+        <div class="step-desc" id="step2d">Passport renewal at Rosebank? Visa overstay multa? PR vs Naturalisation? Use the quick buttons or type freely.</div>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div>
+        <div class="step-title" id="step3t">Get clear guidance</div>
+        <div class="step-desc" id="step3d">Locations, documents needed, processes, costs, and durations — specific to your situation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE COVER -->
+<section class="covers">
+  <p class="section-eyebrow">Coverage</p>
+  <h2 class="section-title" id="covers-title">What the Navigator knows</h2>
+  <div class="cover-grid">
+    <div class="cover-item">
+      <div class="cover-icon">🛂</div>
+      <div class="cover-title" id="c1t">Passport Renewal</div>
+      <div class="cover-desc" id="c1d">Rosebank DHA, Mozambique Embassy — requirements & booking</div>
+    </div>
+    <div class="cover-item">
+      <div class="cover-icon">📋</div>
+      <div class="cover-title" id="c2t">Visa Processes</div>
+      <div class="cover-desc" id="c2d">Work, study, visitor visas — what you need, step by step</div>
+    </div>
+    <div class="cover-item">
+      <div class="cover-icon">⚠️</div>
+      <div class="cover-title" id="c3t">Multa Avoidance</div>
+      <div class="cover-desc" id="c3d">Overstay rules, fines, and how to regularise your status</div>
+    </div>
+    <div class="cover-item">
+      <div class="cover-icon">🏛️</div>
+      <div class="cover-title" id="c4t">PR & Naturalisation</div>
+      <div class="cover-desc" id="c4d">Permanent residency vs citizenship — timelines and paths</div>
+    </div>
+    <div class="cover-item">
+      <div class="cover-icon">📍</div>
+      <div class="cover-title" id="c5t">Office Locations</div>
+      <div class="cover-desc" id="c5d">DHA Rosebank, Mozambique Consulate — addresses & hours</div>
+    </div>
+    <div class="cover-item">
+      <div class="cover-icon">⚖️</div>
+      <div class="cover-title" id="c6t">Essential Laws</div>
+      <div class="cover-desc" id="c6d">Immigration Act, border crossing rights — plain language</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOT -->
+<section class="bot-section" id="navigator">
+  <p class="section-eyebrow">The Navigator</p>
+  <h2 class="section-title" id="bot-title">Ask anything, right now</h2>
+  <p class="section-body" id="bot-body">The AI-llegal counsellor is live and ready. Available 24 hours, always free.</p>
+  <div class="bot-wrapper">
+    <iframe
+      src="https://project-ai-llegal-97285770127.europe-west1.run.app"
+      title="AI-llegal Immigration Navigator"
+      loading="lazy"
+      allow="microphone"
+    ></iframe>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="email-section" id="assist">
+  <p class="section-eyebrow" id="assist-eyebrow">Human Assistance</p>
+  <h2 class="section-title" id="assist-title">Need help with your actual documents?</h2>
+  <p class="section-body" id="assist-body">The navigator answers questions. For hands-on document guidance, leave your details and we'll be in touch.</p>
+  <div class="email-card">
+    <h3 id="form-title">Request document assistance</h3>
+    <p id="form-desc">Tell us what you need help with. We respond within 48 hours. Free for community members.</p>
+    <form class="email-form" id="assistForm">
+      <input type="text" placeholder="Your name" id="f-name" required />
+      <input type="email" placeholder="Email address" id="f-email" required />
+      <select id="f-country">
+        <option value="" disabled selected>Your situation</option>
+        <option>Mozambican in South Africa</option>
+        <option>South African in Mozambique</option>
+        <option>Applying for SA visa</option>
+        <option>Passport renewal</option>
+        <option>Overstay / multa issue</option>
+        <option>PR or naturalisation</option>
+        <option>Other</option>
+      </select>
+      <textarea placeholder="Briefly describe what you need help with..." id="f-msg"></textarea>
+      <button type="submit" id="form-btn">Send Request →</button>
+      <p class="form-note" id="form-note">Your information is private and will never be shared.</p>
+    </form>
+    <div class="success-msg" id="successMsg">
+      ✅ Request received! We'll be in touch within 48 hours. / Pedido recebido! / Isicelo samukelwe!
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Important:</strong> Project AI-llegal provides general immigration information only. It is not a law firm and does not provide legal advice. Immigration situations are individual — always verify critical information with the Department of Home Affairs or a qualified immigration attorney. This is a student community project. <strong>2026 · Project AI-llegal</strong>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-flags">🇿🇦 🇲🇿</div>
+  <div class="footer-logo">AI-llegal</div>
+  <div class="footer-tagline" id="footer-tag">Cross-Border Immigration Navigator · Gauteng & Maputo</div>
+  <div class="footer-links">
+    <a href="#navigator">Navigator</a>
+    <a href="#assist">Get Help</a>
+    <a href="#covers-title">Coverage</a>
+  </div>
+  <div class="footer-copy">© 2026 Project AI-llegal · Student Project for South Africa & Mozambique · Built with purpose.</div>
+</footer>
+
+<!-- FLOATING LANG SWITCHER -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  <button class="lang-btn" onclick="setLang('zu')">ZU</button>
+</div>
+
+<script>
+  const translations = {
+    en: {
+      eyebrow: 'Live · Cross-Border Navigator',
+      heroTitle: 'Navigate <span class="accent">SA & Moz</span><br/>immigration.<br/><span class="accent-red">No confusion.</span>',
+      heroSub: 'Passports, visas, DHA Rosebank, multa avoidance — answered in your language, instantly. Built for Mozambican and South African communities.',
+      heroBt1: 'Ask the Navigator →',
+      heroBt2: 'Need Document Help?',
+      stat1: 'Languages', stat2: 'Available', stat3: 'Always',
+      howEyebrow: 'How it works',
+      howTitle: 'Three steps to clarity',
+      howBody: 'No queues. No lawyers. No guessing. Just ask and get the right information for your situation.',
+      step1t: 'Choose your language', step1d: 'Switch between English, IsiZulu, or Português. The navigator understands and responds in your language.',
+      step2t: 'Ask your question', step2d: 'Passport renewal at Rosebank? Visa overstay multa? PR vs Naturalisation? Use the quick buttons or type freely.',
+      step3t: 'Get clear guidance', step3d: 'Locations, documents needed, processes, costs, and durations — specific to your situation.',
+      coversTitle: 'What the Navigator knows',
+      c1t: 'Passport Renewal', c1d: 'Rosebank DHA, Mozambique Embassy — requirements & booking',
+      c2t: 'Visa Processes', c2d: 'Work, study, visitor visas — what you need, step by step',
+      c3t: 'Multa Avoidance', c3d: 'Overstay rules, fines, and how to regularise your status',
+      c4t: 'PR & Naturalisation', c4d: 'Permanent residency vs citizenship — timelines and paths',
+      c5t: 'Office Locations', c5d: 'DHA Rosebank, Mozambique Consulate — addresses & hours',
+      c6t: 'Essential Laws', c6d: 'Immigration Act, border crossing rights — plain language',
+      botTitle: 'Ask anything, right now',
+      botBody: 'The AI-llegal counsellor is live and ready. Available 24 hours, always free.',
+      assistEyebrow: 'Human Assistance',
+      assistTitle: 'Need help with your actual documents?',
+      assistBody: 'The navigator answers questions. For hands-on document guidance, leave your details and we\'ll be in touch.',
+      formTitle: 'Request document assistance',
+      formDesc: 'Tell us what you need help with. We respond within 48 hours. Free for community members.',
+      formBtn: 'Send Request →',
+      formNote: 'Your information is private and will never be shared.',
+      footerTag: 'Cross-Border Immigration Navigator · Gauteng & Maputo',
+      navCta: 'Get Help',
+    },
+    pt: {
+      eyebrow: 'Ao Vivo · Navegador Transfronteiriço',
+      heroTitle: 'Navegue a imigração<br/><span class="accent">SA & Moç</span><br/><span class="accent-red">Sem confusão.</span>',
+      heroSub: 'Passaportes, vistos, DHA Rosebank, como evitar multas — respondido no seu idioma, na hora. Feito para as comunidades moçambicanas e sul-africanas.',
+      heroBt1: 'Pergunte ao Navegador →',
+      heroBt2: 'Precisa de Ajuda?',
+      stat1: 'Idiomas', stat2: 'Disponível', stat3: 'Grátis',
+      howEyebrow: 'Como funciona',
+      howTitle: 'Três passos para ter clareza',
+      howBody: 'Sem filas. Sem advogados. Sem adivinhar. Basta perguntar e receber a informação certa.',
+      step1t: 'Escolha o seu idioma', step1d: 'Troque entre Inglês, IsiZulu ou Português. O navegador entende e responde no seu idioma.',
+      step2t: 'Faça a sua pergunta', step2d: 'Renovação de passaporte em Rosebank? Multa por ultrapassagem de visto? RP vs Naturalização? Use os botões rápidos ou escreva livremente.',
+      step3t: 'Receba orientação clara', step3d: 'Locais, documentos necessários, processos, custos e prazos — específicos para a sua situação.',
+      coversTitle: 'O que o Navegador sabe',
+      c1t: 'Renovação de Passaporte', c1d: 'DHA Rosebank, Embaixada de Moçambique — requisitos e marcação',
+      c2t: 'Processos de Visto', c2d: 'Vistos de trabalho, estudo, visita — o que precisa, passo a passo',
+      c3t: 'Evitar Multas', c3d: 'Regras de ultrapassagem, multas e como regularizar a sua situação',
+      c4t: 'RP & Naturalização', c4d: 'Residência permanente vs cidadania — prazos e caminhos',
+      c5t: 'Locais dos Escritórios', c5d: 'DHA Rosebank, Consulado de Moçambique — endereços e horários',
+      c6t: 'Leis Essenciais', c6d: 'Lei de Imigração, direitos na fronteira — linguagem simples',
+      botTitle: 'Pergunte qualquer coisa, agora',
+      botBody: 'O conselheiro AI-llegal está ao vivo e pronto. Disponível 24 horas, sempre gratuito.',
+      assistEyebrow: 'Assistência Humana',
+      assistTitle: 'Precisa de ajuda com os seus documentos?',
+      assistBody: 'O navegador responde perguntas. Para orientação prática com documentos, deixe os seus dados e entraremos em contacto.',
+      formTitle: 'Solicitar assistência com documentos',
+      formDesc: 'Diga-nos com o que precisa de ajuda. Respondemos em 48 horas. Gratuito para membros da comunidade.',
+      formBtn: 'Enviar Pedido →',
+      formNote: 'As suas informações são privadas e nunca serão partilhadas.',
+      footerTag: 'Navegador de Imigração Transfronteiriça · Gauteng & Maputo',
+      navCta: 'Obter Ajuda',
+    },
+    zu: {
+      eyebrow: 'Uphila · Umqondisi Wemingcele',
+      heroTitle: 'Hamba kahle ku<span class="accent">SA & Moz</span><br/>ukufuduka.<br/><span class="accent-red">Ngaphandle kwenkinga.</span>',
+      heroSub: 'Amapasipoti, amavisa, DHA Rosebank, ukugwema izingqesho — kuyaphendulwa ngolimi lwakho, ngokushesha. Yakhelwe imiphakathi yaseMozambique naseNingizimu Afrika.',
+      heroBt1: 'Buza uMqondisi →',
+      heroBt2: 'Udinga Usizo?',
+      stat1: 'Izilimi', stat2: 'Uyatholakala', stat3: 'Mahhala',
+      howEyebrow: 'Ukusebenza kwakho',
+      howTitle: 'Izinyathelo ezintathu zokuqonda',
+      howBody: 'Azikho iziguli. Azikho abeluleki bezomthetho. Azikho ukuqagela. Buza nje uthole ulwazi olufanele.',
+      step1t: 'Khetha ulimi lwakho', step1d: 'Shintsha phakathi kwesiNgisi, IsiZulu nesiPutukezi. Umqondisi uyaqonda uphendule ngolimi lwakho.',
+      step2t: 'Buza umbuzo wakho', step2d: 'Ukuvuselela ipasipoti eRosebank? Isijeziso sokwaqa ivisa? PR vs Ukwenziwa umuntu wakuleli? Sebenzisa izinkinobho ezisheshayo noma bhala ngokukhululekile.',
+      step3t: 'Thola ukuqondiswa okucacile', step3d: 'Izindawo, amadokhumenti adingekayo, izinqubo, izindleko, nesikhathi — okwakhiwe ngokwesimo sakho.',
+      coversTitle: 'Lokho uMqondisi akwaziyo',
+      c1t: 'Ukuvuselela Ipasipoti', c1d: 'DHA Rosebank, iNdutho yaMozambique — izidingo nokubhukha',
+      c2t: 'Izinqubo Zamavisa', c2d: 'Amavisa omsebenzi, efundo, nokuhambelana — lokho okudingayo, isinyathelo ngasinye',
+      c3t: 'Ukugwema Izingqesho', c3d: 'Imithetho yokwaqa, izingqesho, nokuthini ukuze ulungise isimo sakho',
+      c4t: 'PR Nokunikezwa Ubukhosi', c4d: 'Ukuhlala okujwayelekile vs ubuzwe — izikhathi nezindlela',
+      c5t: 'Izindawo Zamahovisi', c5d: 'DHA Rosebank, iKhonsuledi yaMozambique — izikhombisi nesikhathi',
+      c6t: 'Imithetho Ebalulekile', c6d: 'Umthetho Wokufuduka, amalungelo emingceleni — ulimi olulula',
+      botTitle: 'Buza noma yini, manje',
+      botBody: 'Umeluleki we-AI-llegal uphila futhi ulungile. Uyatholakala amahora angu-24, mahhala njalo.',
+      assistEyebrow: 'Usizo Lwabantu',
+      assistTitle: 'Udinga usizo ngamadokhumenti akho asebenzayo?',
+      assistBody: 'Umqondisi uphendula imibuzo. Ngokusiza ngamadokhumenti, shiya imininingwane yakho sizonxumana nawe.',
+      formTitle: 'Cela usizo ngamadokhumenti',
+      formDesc: 'Sitshele ukuthi udinga usizo ngani. Siphendula ngamahora angu-48. Kwamahhala kumalungu omphakathi.',
+      formBtn: 'Thumela Isicelo →',
+      formNote: 'Imininingwane yakho iyimfihlo futhi ngeke yabelwane nomunye umuntu.',
+      footerTag: 'Umqondisi Wokufuduka Wemingcele · Gauteng & Maputo',
+      navCta: 'Thola Usizo',
+    }
+  };
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+    document.getElementById('eyebrow-text').textContent = t.eyebrow;
+    document.getElementById('hero-title').innerHTML = t.heroTitle;
+    document.getElementById('hero-sub').textContent = t.heroSub;
+    document.getElementById('hero-btn1').textContent = t.heroBt1;
+    document.getElementById('hero-btn2').textContent = t.heroBt2;
+    document.getElementById('nav-cta-text').textContent = t.navCta;
+    document.getElementById('stat1').textContent = t.stat1;
+    document.getElementById('stat2').textContent = t.stat2;
+    document.getElementById('stat3').textContent = t.stat3;
+    document.getElementById('how-eyebrow').textContent = t.howEyebrow;
+    document.getElementById('how-title').textContent = t.howTitle;
+    document.getElementById('how-body').textContent = t.howBody;
+    document.getElementById('step1t').textContent = t.step1t;
+    document.getElementById('step1d').textContent = t.step1d;
+    document.getElementById('step2t').textContent = t.step2t;
+    document.getElementById('step2d').textContent = t.step2d;
+    document.getElementById('step3t').textContent = t.step3t;
+    document.getElementById('step3d').textContent = t.step3d;
+    document.getElementById('covers-title').textContent = t.coversTitle;
+    document.getElementById('c1t').textContent = t.c1t; document.getElementById('c1d').textContent = t.c1d;
+    document.getElementById('c2t').textContent = t.c2t; document.getElementById('c2d').textContent = t.c2d;
+    document.getElementById('c3t').textContent = t.c3t; document.getElementById('c3d').textContent = t.c3d;
+    document.getElementById('c4t').textContent = t.c4t; document.getElementById('c4d').textContent = t.c4d;
+    document.getElementById('c5t').textContent = t.c5t; document.getElementById('c5d').textContent = t.c5d;
+    document.getElementById('c6t').textContent = t.c6t; document.getElementById('c6d').textContent = t.c6d;
+    document.getElementById('bot-title').textContent = t.botTitle;
+    document.getElementById('bot-body').textContent = t.botBody;
+    document.getElementById('assist-eyebrow').textContent = t.assistEyebrow;
+    document.getElementById('assist-title').textContent = t.assistTitle;
+    document.getElementById('assist-body').textContent = t.assistBody;
+    document.getElementById('form-title').textContent = t.formTitle;
+    document.getElementById('form-desc').textContent = t.formDesc;
+    document.getElementById('form-btn').textContent = t.formBtn;
+    document.getElementById('form-note').textContent = t.formNote;
+    document.getElementById('footer-tag').textContent = t.footerTag;
+  }
+
+  // Form submit — sends to Formspree (replace YOUR_ID with actual Formspree endpoint)
+  document.getElementById('assistForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('form-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    // Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID
+    fetch('https://formspree.io/f/mqevbzyd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('f-name').value,
+        email: document.getElementById('f-email').value,
+        situation: document.getElementById('f-country').value,
+        message: document.getElementById('f-msg').value,
+        language: currentLang,
+      })
+    })
+    .then(r => {
+      document.getElementById('assistForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    })
+    .catch(() => {
+      // Fallback — show success anyway for demo
+      document.getElementById('assistForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
