@@ -8,9 +8,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-   
-
-     :root {
+    :root {
   --black:   #1A1A1A;
   --dark:    #F7F9F7;
   --card:    #FFFFFF;
@@ -22,8 +20,7 @@
   --white:   #0A0A0A;
   --red:     #CE1126;
   --gold:    #FCB514;
-}
-    
+   }
 
     html { scroll-behavior: smooth; }
 
@@ -531,23 +528,7 @@
   <div class="email-card">
     <h3 id="form-title">Request document assistance</h3>
     <p id="form-desc">Tell us what you need help with. We respond within 48 hours. Free for community members.</p>
-    <form class="email-form" action="https://formspree.io/f/mqevbzyd" method="POST">
-  <input type="text" name="name" placeholder="Your name" required />
-  <input type="email" name="email" placeholder="Email address" required />
-  <select name="situation">
-    <option value="" disabled selected>Your situation</option>
-    <option>Mozambican in South Africa</option>
-    <option>South African in Mozambique</option>
-    <option>Applying for SA visa</option>
-    <option>Passport renewal</option>
-    <option>Overstay / multa issue</option>
-    <option>PR or naturalisation</option>
-    <option>Other</option>
-  </select>
-  <textarea name="message" placeholder="Briefly describe what you need help with..."></textarea>
-  <button type="submit">Send Request →</button>
-  <p class="form-note">Your information is private and will never be shared.</p>
-</form>
+    <form class="email-form" id="assistForm">
       <input type="text" placeholder="Your name" id="f-name" required />
       <input type="email" placeholder="Email address" id="f-email" required />
       <select id="f-country">
@@ -749,7 +730,8 @@
     btn.disabled = true;
 
     // Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID
-    fetch('https://formspree.io/f/mqevbzyd', {
+    fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         name: document.getElementById('f-name').value,
