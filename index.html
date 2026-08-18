@@ -38,7 +38,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 1.5rem;
-      background: rgba(10,10,10,0.85);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -272,7 +272,7 @@
     .email-card p { color: #AAAAAA; font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
     .email-form { display: flex; flex-direction: column; gap: 0.75rem; }
     .email-form input, .email-form select, .email-form textarea {
-      background: #111;
+      background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 0.85rem 1rem;
@@ -285,10 +285,10 @@
     .email-form input:focus, .email-form select:focus, .email-form textarea:focus {
       outline: none; border-color: var(--mint);
     }
-    .email-form select option { background: #111; }
+    .email-form select option { background: #ffffff; }
     .email-form textarea { height: 90px; resize: vertical; }
     .email-form button {
-      background: var(--mint); color: var(--black);
+      background: var(--mint); color: var(--white);
       border: none; border-radius: 10px;
       padding: 0.9rem;
       font-family: 'Space Grotesk', sans-serif;
@@ -394,7 +394,7 @@
 <nav>
   <div>
     <span class="nav-logo">AI<span>-llegal</span></span>
-    <span class="nav-flags">🇿🇦🇲🇿</span>
+   
   </div>
   <a href="#assist" class="nav-cta" id="nav-cta-text">Get Help</a>
 </nav>
@@ -722,35 +722,7 @@
     document.getElementById('footer-tag').textContent = t.footerTag;
   }
 
-  // Form submit — sends to Formspree (replace YOUR_ID with actual Formspree endpoint)
-  document.getElementById('assistForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('form-btn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    // Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID
-    fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: document.getElementById('f-name').value,
-        email: document.getElementById('f-email').value,
-        situation: document.getElementById('f-country').value,
-        message: document.getElementById('f-msg').value,
-        language: currentLang,
-      })
-    })
-    .then(r => {
-      document.getElementById('assistForm').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    })
-    .catch(() => {
-      // Fallback — show success anyway for demo
-      document.getElementById('assistForm').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    });
-  });
+ 
 </script>
 </body>
 </html>
