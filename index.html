@@ -529,22 +529,7 @@
     <h3 id="form-title">Request document assistance</h3>
     <p id="form-desc">Tell us what you need help with. We respond within 48 hours. Free for community members.</p>
     <form class="email-form" id="assistForm">
-      <input type="text" placeholder="Your name" id="f-name" required />
-      <input type="email" placeholder="Email address" id="f-email" required />
-      <select id="f-country">
-        <option value="" disabled selected>Your situation</option>
-        <option>Mozambican in South Africa</option>
-        <option>South African in Mozambique</option>
-        <option>Applying for SA visa</option>
-        <option>Passport renewal</option>
-        <option>Overstay / multa issue</option>
-        <option>PR or naturalisation</option>
-        <option>Other</option>
-      </select>
-      <textarea placeholder="Briefly describe what you need help with..." id="f-msg"></textarea>
-      <button type="submit" id="form-btn">Send Request →</button>
-      <p class="form-note" id="form-note">Your information is private and will never be shared.</p>
-    </form>
+      
     <div class="success-msg" id="successMsg">
       ✅ Request received! We'll be in touch within 48 hours. / Pedido recebido! / Isicelo samukelwe!
     </div>
@@ -723,6 +708,35 @@
   }
 
  
+document.querySelector('.email-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      btn.textContent = 'Send Request →';
+      btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Send Request →';
+    btn.disabled = false;
+    alert('Network error — please try again.');
+  });
+});
+
 </script>
 </body>
 </html>
